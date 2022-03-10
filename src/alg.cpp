@@ -1,7 +1,7 @@
 // Copyright 2021 NNTU-CS
 void quickSort(int* array, int low, int high) {
     int i = low;
-    int j = high-1;
+    int j = high;
     int pivot = array[(i + j) / 2];
     int temp;
 
@@ -48,7 +48,7 @@ int countPairs1(int* arr, int len, int value) {
     return count;
 }
 int countPairs2(int* arr, int len, int value) {
-    quickSort(arr,0,len);
+    quickSort(arr,0,len-1);
     int count = 0;
     for (int i = 0; i < len; i++) {
         for (int j = len-1; j > i; j--) {
@@ -60,7 +60,7 @@ int countPairs2(int* arr, int len, int value) {
     return count;
 }
 int countPairs3(int* arr, int len, int value) {
-    quickSort(arr,0,len);
+    quickSort(arr,0,len-1);
     int count = 0;
     for (int i = 0; i < len; i++) {
         count += binSearch(&arr[i+1], 0, len-i, value - arr[i]);

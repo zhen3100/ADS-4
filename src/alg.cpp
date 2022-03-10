@@ -1,4 +1,4 @@
-// Copyright 2021 NNTU-CS
+// Copyright 2021 EV.VOLKOV
 void quickSort(int* array, int low, int high) {
     int i = low;
     int j = high;

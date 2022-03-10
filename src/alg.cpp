@@ -3,7 +3,8 @@ int binSearch(int *arr, int left, int right, int number) {
     if (right >= left) {
         int mid = left + (right - left) / 2;
         if (arr[mid] == number)
-            return binSearch(arr,left,mid-1,number)+binSearch(arr,mid+1,right,number)+1;
+            return binSearch(arr, left, mid-1, number)+
+            binSearch(arr, mid+1, right, number)+1;
         else if (arr[mid] > number)
             return binSearch(arr, left, mid-1, number);
         return binSearch(arr, mid + 1, right, number);
@@ -17,7 +18,6 @@ int countPairs1(int* arr, int len, int value) {
         for (int j = i + 1; j < len; j++) {
             if (arr[i] + arr[j] == value) {
                 count++;
-
             }
         }
     }
@@ -27,14 +27,12 @@ int countPairs2(int* arr, int len, int value) {
     int count = 0;
     for (int i = 0; i < len; i++) {
         for (int j = len-1; j > i; j--) {
-
             if (arr[i]+arr[j] == value) {
                 count++;
             }
         }
     }
     return count;
-
 }
 int countPairs3(int* arr, int len, int value) {
     int count = 0;

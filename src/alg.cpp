@@ -1,4 +1,28 @@
 // Copyright 2021 NNTU-CS
+void quickSort(int* array, int low, int high) {
+    int i = low;
+    int j = high-1;
+    int pivot = array[(i + j) / 2];
+    int temp;
+
+    while (i <= j) {
+        while (array[i] < pivot)
+            i++;
+        while (array[j] > pivot)
+            j--;
+        if (i <= j) {
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    if (j > low)
+        quickSort(array, low, j);
+    if (i < high)
+        quickSort(array, i, high);
+}
 int binSearch(int *arr, int left, int right, int number) {
     if (right >= left) {
         int mid = left + (right - left) / 2;
@@ -24,6 +48,7 @@ int countPairs1(int* arr, int len, int value) {
     return count;
 }
 int countPairs2(int* arr, int len, int value) {
+    quickSort(arr,0,len);
     int count = 0;
     for (int i = 0; i < len; i++) {
         for (int j = len-1; j > i; j--) {
@@ -35,35 +60,10 @@ int countPairs2(int* arr, int len, int value) {
     return count;
 }
 int countPairs3(int* arr, int len, int value) {
+    quickSort(arr,0,len);
     int count = 0;
     for (int i = 0; i < len; i++) {
         count += binSearch(&arr[i+1], 0, len-i, value - arr[i]);
     }
     return count;
-}
-
-
-void quickSort(int* array, int low, int high) {
-    int i = low;
-    int j = high;
-    int pivot = array[(i + j) / 2];
-    int temp;
-
-    while (i <= j) {
-        while (array[i] < pivot)
-            i++;
-        while (array[j] > pivot)
-            j--;
-        if (i <= j) {
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-            i++;
-            j--;
-        }
-    }
-    if (j > low)
-        quickSort(array, low, j);
-    if (i < high)
-        quickSort(array, i, high);
 }

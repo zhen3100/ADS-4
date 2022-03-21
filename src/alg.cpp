@@ -37,6 +37,7 @@ int binSearch(int *arr, int left, int right, int number) {
 }
 
 int countPairs1(int* arr, int len, int value) {
+    quickSort(arr, 0, len-1);
     int count = 0;
     for (int i = 0; i < len; i++) {
         for (int j = i + 1; j < len; j++) {
